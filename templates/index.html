@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="/predict" method="POST">
+        <label for="input_date">Fecha (dd/mm/yyyy):</label>
+        <input type="date" id="input_date" name="input_date" required>
+        <button type="submit">Predecir</button>
+    </form>
+{% endblock %}
