@@ -1,9 +1,27 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <form action="/predict" method="POST">
-        <label for="input_date">Fecha (dd/mm/yyyy):</label>
-        <input type="date" id="input_date" name="input_date" required>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicciones Prophet</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Predicciones Prophet para los próximos 7 días</h1>
+    <form id="predictionForm">
+        <label for="inputDate">Fecha (dd/mm/yyyy):</label>
+        <input type="date" id="inputDate" name="input_date" required>
         <button type="submit">Predecir</button>
     </form>
-{% endblock %}
+    
+    <div id="results">
+        <h2>Resultados de la predicción</h2>
+        <div id="tableContainer"></div>
+        <div id="chartContainer"></div>
+        <div id="averageFuture"></div>
+        <div id="averagePast"></div>
+    </div>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>
