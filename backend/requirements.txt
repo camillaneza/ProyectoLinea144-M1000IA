@@ -1,0 +1,5 @@
+pandas
+prophet
+flask
+flask-cors
+python-dotenv
