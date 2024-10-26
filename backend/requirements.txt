@@ -3,3 +3,4 @@ prophet
 flask
 flask-cors
 python-dotenv
+Gunicorn
