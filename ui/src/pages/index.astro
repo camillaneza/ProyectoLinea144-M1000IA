@@ -1,0 +1,20 @@
+---
+import { Separator } from "@/components/ui/separator";
+import Layout from "../layouts/Layout.astro";
+import { ProfileForm } from "@/components/forms/date_form";
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="space-y-6 p-10 pb-16">
+    <div class="space-y-0.5">
+      <h1 class="font-bold text-2xl tracking-tight">
+        Proyectar predicion en linea 144
+      </h1>
+      <p class="text-muted-foreground">Modelo Prophet</p>
+    </div>
+    <Separator />
+    <div class="flex flex-col space-y-8">
+      <ProfileForm client:load />
+    </div>
+  </main>
+</Layout>
