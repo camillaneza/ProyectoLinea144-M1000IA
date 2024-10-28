@@ -72,9 +72,9 @@ export function ForecastChart({
   return (
     <Card className="max-w-[800px]">
       <CardHeader>
-        <CardTitle>Grafica de los proximos 7 dias</CardTitle>
+        <CardTitle>Gráfica de los próximos 7 días</CardTitle>
         <CardDescription>
-          Promedio de llamadas al dias: <b>{avg.toFixed(2)}</b>
+          Promedio de llamadas al día: <b>{avg.toFixed(2)}</b>
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -121,7 +121,7 @@ export function ForecastChart({
         <div className="flex items-start gap-2 w-full text-sm">
           <div className="gap-2 grid">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Prediccion con rango de confianza
+              Predicción con rango de confianza
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 model_filename = "prophet_model.pkl"
 file_path = os.path.join(script_dir, model_filename)
 model = load_prophet_model(file_path)
-port = os.getenv("PORT")
+port = 4321  # O el puerto que desees
 client_host = os.getenv("CLIENT_HOST")
 flask_env = os.getenv("FLASK_ENV")
 

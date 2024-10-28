@@ -2,13 +2,16 @@
 import { Separator } from "@/components/ui/separator";
 import Layout from "../layouts/Layout.astro";
 import { ProfileForm } from "@/components/forms/date_form";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="space-y-6 p-10 pb-16">
-    <div class="space-y-0.5">
+<Header />
+<Layout title="Predicción Línea 144">
+  <main class="flex-grow min-h-[calc(100vh-200px)] flex flex-wrap  justify-center  pace-y-6 p-10 pb-16">
+    <div class="flex  flex-col space-y-0.5 ">
       <h1 class="font-bold text-2xl tracking-tight">
-        Proyectar predicion en linea 144
+        Proyectar predición en línea 144
       </h1>
       <p class="text-muted-foreground">Modelo Prophet</p>
     </div>
@@ -18,3 +21,4 @@ import { ProfileForm } from "@/components/forms/date_form";
     </div>
   </main>
 </Layout>
+<Footer />
