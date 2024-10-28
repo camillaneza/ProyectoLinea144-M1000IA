@@ -1,6 +1,7 @@
 # Proyecto Línea 144 - IA Prediction
 
-![Logo](path/to/Logo.svg)
+![Logo](ui/public/Logo.svg)
+<https://proyecto-linea144-m1000-ia.vercel.app/>
 
 ## Introducción
 
