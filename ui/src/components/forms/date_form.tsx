@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { CalendarIcon } from "@radix-ui/react-icons";
+import { ArrowDownIcon, ArrowUpIcon, CalendarIcon } from "@radix-ui/react-icons";
 import { Calendar } from "../ui/calendar";
 import { useForm } from "react-hook-form";
 import {
@@ -65,16 +65,18 @@ const chartConfig = {
 export function ForecastChart({
   data,
   avg,
+  pastAvg
 }: {
   data: ForecaseData[];
   avg: number;
+  pastAvg: number;
 }) {
   return (
     <Card className="max-w-[800px]">
       <CardHeader>
         <CardTitle>Gráfica de los próximos 7 días</CardTitle>
         <CardDescription>
-          Promedio de llamadas al día: <b>{avg.toFixed(2)}</b>
+          
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -123,6 +125,10 @@ export function ForecastChart({
             <div className="flex items-center gap-2 font-medium leading-none">
               Predicción con rango de confianza
             </div>
+            Promedio 7 días:
+            <br />
+            <span className={cn("font-medium flex flex-row", avg > pastAvg ? "text-red-500" : "text-green-600")}>{avg.toFixed(2)} llamadas {avg > pastAvg ? <ArrowUpIcon /> : <ArrowDownIcon />}</span>
+            <span className="font-normal text-gray-700">{pastAvg.toFixed(2)} llamadas</span>
           </div>
         </div>
       </CardFooter>
@@ -137,6 +143,7 @@ const formSchema = z.object({
 export function ProfileForm() {
   const [forecast, setForecast] = useState<ForecaseData[]>();
   const [avg, setAvg] = useState<number>();
+  const [pastAvg, setPastAvg] = useState<number>();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -152,6 +159,7 @@ export function ProfileForm() {
     const data = await res.json();
 
     setAvg(data.avg[0]);
+    setPastAvg(data.past_avg[0]);
     setForecast(
       Object.keys(data.ds).map((key) => ({
         month: new Date(data.ds[key]).toLocaleDateString("en-US", {
@@ -165,7 +173,6 @@ export function ProfileForm() {
         ],
         yhat_lower: data.yhat_lower[key] as number,
         yhat_upper: data.yhat_upper[key] as number,
-        avg: data.avg,
       }))
     );
   }
@@ -220,7 +227,7 @@ export function ProfileForm() {
           </FormItem>
         </form>
       </Form>
-      {forecast && avg && <ForecastChart data={forecast} avg={avg} />}
+      {forecast && avg && pastAvg && <ForecastChart data={forecast} avg={avg} pastAvg={pastAvg} />}
     </>
   );
 }
